@@ -4,6 +4,9 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageDescription>Inventory service contracts used by Play Economy services.</PackageDescription>
+    <Authors>Marwane BIDAMOU</Authors>
+    <Company>Devmarwane</Company>
   </PropertyGroup>
 
 </Project>
