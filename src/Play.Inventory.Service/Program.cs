@@ -26,7 +26,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMongo()
     .AddMongoRepository<InventoryItem>(collectionName: "inventoryitems")
     .AddMongoRepository<CatalogItem>(collectionName: "catalogitems")
-    .AddMassTrannsitWithRabbitMq(retryConfigurator =>
+    .AddMassTrannsitWithMessageBroker(builder.Configuration, retryConfigurator =>
     {
         retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
         retryConfigurator.Ignore(typeof(UnknownItemException));
