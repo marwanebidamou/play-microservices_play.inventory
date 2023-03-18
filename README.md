@@ -32,3 +32,11 @@ $cosmosDbConnString="[CONN STRING HERE]"
 $serviceBusConnString="[CONN STRING HERE]"
 docker run -it --rm -p 5004:5004 --name inventory -e MongoDbSettings__ConnectionString=$cosmosDbConnString -e ServiceBusSettings__ConnectionString=$serviceBusConnString -e ServiceSettings__MessageBroker="SERVICEBUS" play.inventory:$version
 ```
+
+## Publishing the Docker image
+```powershell
+$acrname="azacreconomy"
+az acr login --name $acrname
+docker tag play.inventory:$version "$acrname.azurecr.io/play.inventory:$version"
+docker push "$acrname.azurecr.io/play.inventory:$version"
+```
