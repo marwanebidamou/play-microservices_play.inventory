@@ -1,4 +1,5 @@
 using GreenPipes;
+using Play.Common.HealthChecks;
 using Play.Common.Identity;
 using Play.Common.MassTransit;
 using Play.Common.MongoDB;
@@ -33,6 +34,8 @@ builder.Services.AddMongo()
     })
     .AddJwtBearerAuthentication();
 
+builder.Services.AddHealthChecks()
+    .AddMongoDb();
 
 AddCatalogClient(builder);
 
@@ -61,6 +64,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapPlayEconomyHealtChecks();
 
 app.Run();
 
